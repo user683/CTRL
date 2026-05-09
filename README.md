@@ -4,6 +4,7 @@ This repository contains the implementation of **CTRL**, a continual test-time r
 - **Error accumulation**: majority-voted pseudo-labels can reinforce wrong answers, and the bias compounds across sequential updates.
 - **Catastrophic forgetting**: gradients from new tasks can overwrite reasoning patterns learned from earlier tasks.
 CTRL mitigates these issues with PRM-guided trajectory selection, posterior correction, output-process distillation, cognitive anchor replay, and conflict-aware gradient projection.
+
 <p align="center">
   <img src="figs/model_framework.png" alt="CTRL framework overview" width="100%">
 </p>
@@ -58,6 +59,8 @@ The main example script is:
 bash verl/examples/ctrl/Qwen3/math_cttrl.sh
 ```
 
+We provide two PRM integration modes: a locally deployed PRM model, or a remote PRM model accessed through an API. You can select and configure either mode by following the prompts in `math_cttrl.sh`.
+
 Important variables in the script:
 
 - `TASK`: target task, for example `AMC`, `AIME24`, or `MATH`.
@@ -75,6 +78,7 @@ bash verl/examples/ctrl/Qwen3/math_cttrl.sh \
   trainer.total_epochs=20 \
   cttrl.memory.enable_replay=true
 ```
+
 
 ## Baselines
 
