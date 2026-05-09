@@ -6,7 +6,7 @@ This repository contains the implementation of **CTRL**, a continual test-time r
 CTRL mitigates these issues with PRM-guided trajectory selection, posterior correction, output-process distillation, cognitive anchor replay, and conflict-aware gradient projection.
 
 <p align="center">
-  <img src="figs/model_framework.png" alt="CTRL framework overview" width="100%">
+  <img src="figs/model_framework.png" alt="CTRL framework overview" width="80%">
 </p>
 
 
