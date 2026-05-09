@@ -60,7 +60,7 @@ bash verl/examples/ctrl/Qwen3/math_cttrl.sh
 
 Important variables in the script:
 
-- `TASK`: target task, for example `AMC-TTT`, `AIME-TTT`, or `MATH-TTT`.
+- `TASK`: target task, for example `AMC`, `AIME24`, or `MATH`.
 - `BACKBONE`: policy backbone name.
 - `BACKBONE_PATH`: local Hugging Face checkpoint path.
 - `K`: number of rollouts per prompt, set to `32` by default.
