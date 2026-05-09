@@ -1,0 +1,18 @@
+/docs @anonymous
+/docs/amd_tutorial @anonymous
+/docs/slang_multiturn @anonymous
+
+/recipe/dapo @anonymous
+/recipe/spin @anonymous
+/recipe/sppo @anonymous
+
+/third_party/sglang @anonymous
+/third_party/vllm @anonymous
+/verl/single_controller @anonymous
+/verl/trainer @anonymous
+/verl/workers/rollout/vllm_rollout @anonymous
+/verl/workers/rollout/sglang_rollout @anonymous
+
+/tests/single_controller @anonymous
+/tests/trainer @anonymous
+/tests/workers/rollout/vllm_rollout @anonymous

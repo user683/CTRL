@@ -1,0 +1,61 @@
+hydra:
+  searchpath:
+    - file://verl/trainer/config
+
+defaults:
+  - ppo_trainer
+  - _self_
+
+cttrl:
+  enable: True
+  n_rollouts: ${actor_rollout_ref.rollout.n}
+  bottom_m: 3
+  adv_clip: 5.0
+  gamma_R: 0.55
+  gamma_C: 0.60
+  gamma_mv_update: 0.50
+  gamma_R_update: 0.45
+  alpha_opd: 0.5
+  len_penalty_coef: 0.01
+  lambda_reliability: 1.0
+  lambda_consistency: 0.5
+  lambda_length: 0.01
+  update_gate_mode: "prompt"
+  # Step-level PRM masking thresholds (Step 12 & Step 15)
+  gamma_step: 0.5
+  gamma_step_old: 0.4
+  posterior_correction:
+    enable: true
+  prm:
+    # mode: "api" for remote OpenAI-compatible API, "local" for local model
+    mode: ${oc.env:CTTRL_PRM_MODE,api}
+    # --- API mode settings ---
+    api_base: ${oc.env:CTTRL_PRM_API_BASE,null}
+    api_key_env: ${oc.env:CTTRL_PRM_API_KEY_ENV,CTTRL_PRM_API_KEY}
+    model_name: ${oc.env:CTTRL_PRM_MODEL,qwen-prm}
+    endpoint_path: ${oc.env:CTTRL_PRM_ENDPOINT_PATH,/prm/score}
+    timeout: 60
+    max_retries: 3
+    reasoning_effort: ${oc.env:CTTRL_PRM_REASONING_EFFORT,null}
+    extra_body: ${oc.env:CTTRL_PRM_EXTRA_BODY,null}
+    enable_thinking: ${oc.env:CTTRL_PRM_ENABLE_THINKING,false}
+    # --- Local mode settings ---
+    model_path: ${oc.env:CTTRL_PRM_MODEL_PATH,null}
+    device: ${oc.env:CTTRL_PRM_DEVICE,null}
+    torch_dtype: "bfloat16"
+    step_tag: "<extra_0>"
+    max_length: 8192
+    # --- Common ---
+    step_delimiter: "<extra_0>"
+    system_prompt: "Please reason step by step, and put your final answer within \\boxed{}."
+  memory:
+    capacity: 512
+    replay_batch_size: 8
+    min_replay_items: 16
+    enable_replay: false
+    similarity_dedup: false
+  anchor:
+    kappa: 1.0
+    rho: 1.0
+    conflict_threshold: 0.0
+    proj_lambda: 1.0
