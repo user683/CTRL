@@ -1,12 +1,8 @@
 # CTRL: Continual Test-Time Reinforcement Learning for Large Language Models
 
-This repository contains the implementation of **CTRL**, a continual test-time reinforcement learning framework for adapting large language models over a stream of unlabeled reasoning tasks.
-
-CTRL addresses two coupled failure modes in continual TTRL:
-
+This repository contains the implementation of **CTRL**, a continual test-time reinforcement learning framework for adapting large language models over a stream of unlabeled reasoning tasks. CTRL addresses two coupled failure modes in continual TTRL:
 - **Error accumulation**: majority-voted pseudo-labels can reinforce wrong answers, and the bias compounds across sequential updates.
 - **Catastrophic forgetting**: gradients from new tasks can overwrite reasoning patterns learned from earlier tasks.
-
 CTRL mitigates these issues with PRM-guided trajectory selection, posterior correction, output-process distillation, cognitive anchor replay, and conflict-aware gradient projection.
 <p align="center">
   <img src="figs/model_framework.png" alt="CTRL framework overview" width="100%">
